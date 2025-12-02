@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '', message: '' });
+  const [submitted, setSubmitted] = useState(false); // New state to show thank you message
 
   return (
     <div className="min-h-screen bg-slate-950 pt-24 pb-20">
@@ -19,77 +20,89 @@ const Contact = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Updated form for Netlify */}
-          <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            className="space-y-6"
-          >
-            <input type="hidden" name="form-name" value="contact" />
-            <input type="hidden" name="bot-field" />
-
-            <div>
-              <label className="block text-slate-300 mb-2 font-medium">Full Name *</label>
-              <input
-                type="text"
-                name="name"
-                required
-                value={formData.name}
-                onChange={e => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
-              />
-            </div>
-            <div>
-              <label className="block text-slate-300 mb-2 font-medium">Email *</label>
-              <input
-                type="email"
-                name="email"
-                required
-                value={formData.email}
-                onChange={e => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
-              />
-            </div>
-            <div>
-              <label className="block text-slate-300 mb-2 font-medium">Phone</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
-              />
-            </div>
-            <div>
-              <label className="block text-slate-300 mb-2 font-medium">Company</label>
-              <input
-                type="text"
-                name="company"
-                value={formData.company}
-                onChange={e => setFormData({ ...formData, company: e.target.value })}
-                className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
-              />
-            </div>
-            <div>
-              <label className="block text-slate-300 mb-2 font-medium">Message *</label>
-              <textarea
-                name="message"
-                required
-                value={formData.message}
-                onChange={e => setFormData({ ...formData, message: e.target.value })}
-                rows={6}
-                className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all resize-none"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full px-8 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg font-semibold hover:shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 flex items-center justify-center"
+          {/* Netlify Form */}
+          {!submitted ? (
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              className="space-y-6"
             >
-              <Send className="w-5 h-5 mr-2" />Send Message
-            </button>
-          </form>
+              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="bot-field" />
+
+              <div>
+                <label className="block text-slate-300 mb-2 font-medium">Full Name *</label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
+                />
+              </div>
+
+              <div>
+                <label className="block text-slate-300 mb-2 font-medium">Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
+                />
+              </div>
+
+              <div>
+                <label className="block text-slate-300 mb-2 font-medium">Phone</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
+                />
+              </div>
+
+              <div>
+                <label className="block text-slate-300 mb-2 font-medium">Company</label>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={e => setFormData({ ...formData, company: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
+                />
+              </div>
+
+              <div>
+                <label className="block text-slate-300 mb-2 font-medium">Message *</label>
+                <textarea
+                  name="message"
+                  required
+                  value={formData.message}
+                  onChange={e => setFormData({ ...formData, message: e.target.value })}
+                  rows={6}
+                  className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full px-8 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg font-semibold hover:shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 flex items-center justify-center"
+                onClick={() => setSubmitted(true)} // Show thank you message after submission
+              >
+                <Send className="w-5 h-5 mr-2" />Send Message
+              </button>
+            </form>
+          ) : (
+            <div className="p-6 bg-teal-500/10 border border-teal-500/50 rounded-lg text-teal-400 text-center">
+              Thank you! We'll get back to you shortly.
+            </div>
+          )}
 
           <div>
             <div className="space-y-8">
