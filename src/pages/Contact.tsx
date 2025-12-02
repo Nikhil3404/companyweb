@@ -1,28 +1,8 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact-form`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}` },
-        body: JSON.stringify(formData)
-      });
-      setSubmitStatus(response.ok ? 'success' : 'error');
-      if (response.ok) setFormData({ name: '', email: '', phone: '', company: '', message: '' });
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-slate-950 pt-24 pb-20">
@@ -39,11 +19,22 @@ const Contact = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Updated form for Netlify */}
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            className="space-y-6"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="bot-field" />
+
             <div>
               <label className="block text-slate-300 mb-2 font-medium">Full Name *</label>
               <input
                 type="text"
+                name="name"
                 required
                 value={formData.name}
                 onChange={e => setFormData({ ...formData, name: e.target.value })}
@@ -54,6 +45,7 @@ const Contact = () => {
               <label className="block text-slate-300 mb-2 font-medium">Email *</label>
               <input
                 type="email"
+                name="email"
                 required
                 value={formData.email}
                 onChange={e => setFormData({ ...formData, email: e.target.value })}
@@ -64,6 +56,7 @@ const Contact = () => {
               <label className="block text-slate-300 mb-2 font-medium">Phone</label>
               <input
                 type="tel"
+                name="phone"
                 value={formData.phone}
                 onChange={e => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
@@ -73,6 +66,7 @@ const Contact = () => {
               <label className="block text-slate-300 mb-2 font-medium">Company</label>
               <input
                 type="text"
+                name="company"
                 value={formData.company}
                 onChange={e => setFormData({ ...formData, company: e.target.value })}
                 className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
@@ -81,6 +75,7 @@ const Contact = () => {
             <div>
               <label className="block text-slate-300 mb-2 font-medium">Message *</label>
               <textarea
+                name="message"
                 required
                 value={formData.message}
                 onChange={e => setFormData({ ...formData, message: e.target.value })}
@@ -90,13 +85,10 @@ const Contact = () => {
             </div>
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full px-8 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg font-semibold hover:shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 disabled:opacity-50 flex items-center justify-center"
+              className="w-full px-8 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg font-semibold hover:shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 flex items-center justify-center"
             >
-              {isSubmitting ? 'Sending...' : <><Send className="w-5 h-5 mr-2" />Send Message</>}
+              <Send className="w-5 h-5 mr-2" />Send Message
             </button>
-            {submitStatus === 'success' && <div className="p-4 bg-orange-500/20 border border-orange-500/50 rounded-lg text-orange-400">Thank you! We'll get back to you shortly.</div>}
-            {submitStatus === 'error' && <div className="p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400">Something went wrong. Please try again.</div>}
           </form>
 
           <div>
@@ -118,17 +110,16 @@ const Contact = () => {
               ))}
             </div>
             <div className="mt-8 rounded-2xl overflow-hidden h-96 border border-slate-800">
-              
               <iframe
-              title="Map"
-              width="100%"
-              height="100%"
-              style={{ border: 0, borderRadius: 12 }}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=212+N+2nd+St,+Richmond,+KY+40475&output=embed">
-            </iframe>
+                title="Map"
+                width="100%"
+                height="100%"
+                style={{ border: 0, borderRadius: 12 }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=212+N+2nd+St,+Richmond,+KY+40475&output=embed"
+              ></iframe>
             </div>
           </div>
         </div>
