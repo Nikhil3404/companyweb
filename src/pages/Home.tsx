@@ -91,7 +91,8 @@ const Home = () => {
               { count: teamCount, suffix: '', label: 'Team Members', gradient: 'from-orange-400 to-teal-500' }
             ].map((stat, index) => (
               <div key={index} className="text-center group cursor-pointer">
-                <div className={`text-5xl md:text-6xl font-black bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`text-[2.75rem] sm:text-5xl md:text-6xl font-black bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300 tracking-tight whitespace-nowrap`}>
+
                   {stat.count}{stat.suffix}
                 </div>
                 <div className="text-slate-400 font-medium">{stat.label}</div>

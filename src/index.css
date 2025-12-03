@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ✅ CRITICAL MOBILE FULLSCREEN FIX */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #020617; /* slate-950 */
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #020617;
+}
+
+/* ✅ YOUR EXISTING BASE LAYER (UNCHANGED) */
 @layer base {
   * {
     @apply scroll-smooth;
@@ -13,6 +31,7 @@
   }
 }
 
+/* ✅ YOUR EXISTING UTILITIES (UNCHANGED) */
 @layer utilities {
   @keyframes fade-in-up {
     from {
