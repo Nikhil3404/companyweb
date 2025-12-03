@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, Zap, Shield, Code, Cloud, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Shield, Code, Cloud, ShieldCheck, Rocket } from 'lucide-react';
 import { AnimatedSection } from '../components/AnimatedSection';
-import CountUp from 'react-countup';
-import { useInView } from 'react-intersection-observer';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useCountUp } from '../hooks/useCountUp';
 
 const Home = () => {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHeroHovered, setIsHeroHovered] = useState(false);
+  const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation();
+
+  const projectCount = useCountUp(20, 1000, statsVisible);
+  const satisfactionCount = useCountUp(100, 1000, statsVisible);
+  const teamCount = useCountUp(15, 1000, statsVisible);
 
   const serviceOverlays = [
     { icon: Sparkles, pattern: 'repeating-linear-gradient(45deg, rgba(20, 184, 166, 0.1) 0px, rgba(20, 184, 166, 0.1) 10px, transparent 10px, transparent 20px)' },
@@ -27,30 +30,12 @@ const Home = () => {
 
       <section
         className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20"
-        onMouseMove={(e) => {
-          const rect = e.currentTarget.getBoundingClientRect();
-          setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-        }}
-        onMouseEnter={() => setIsHeroHovered(true)}
-        onMouseLeave={() => setIsHeroHovered(false)}
       >
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1920')] bg-cover bg-center opacity-40"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/75 to-slate-950"></div>
         <div className="max-w-7xl mx-auto relative z-10 text-center">
-          {isHeroHovered && (
-            <div
-              className="pointer-events-none fixed w-96 h-96 rounded-full transition-opacity duration-500"
-              style={{
-                left: mousePosition.x - 192,
-                top: mousePosition.y - 192,
-                background: 'radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, transparent 70%)',
-                mixBlendMode: 'screen'
-              }}
-            />
-          )}
 
-          {/* Hero Heading */}
-          <div className="relative group">
+<div className="relative group">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.15] tracking-tight">
               <span className="block mb-3 overflow-hidden">
                 <span className="inline-block animate-slide-up opacity-0" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
@@ -67,16 +52,13 @@ const Home = () => {
                 </span>
               </span>
             </h1>
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 via-cyan-500/10 to-orange-500/10 blur-3xl"></div>
-            </div>
           </div>
 
           <p className="text-xl md:text-2xl text-slate-400 italic font-light mb-10 animate-fade-in tracking-wide" style={{ animationDelay: '600ms' }}>
             because the best ideas aren't logical.
           </p>
 
-          <p className="text-lg md:text-xl text-teal-100 leading-relaxed font-medium mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '800ms' }}>
+<p className="text-lg md:text-xl text-teal-100 leading-relaxed font-medium mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '800ms' }}>
             Data, Cloud, AI and full-stack staffing—delivered with precision.
           </p>
 
@@ -93,49 +75,34 @@ const Home = () => {
             </Link>
             <Link
               to="/contact"
-              className="px-10 py-5 bg-slate-800/50 backdrop-blur-sm border-2 border-teal-500/30 text-white rounded-2xl font-bold text-lg hover:bg-slate-700/50 hover:border-teal-500/60 transition-all duration-300 transform hover:scale-105"
+              className="group px-8 py-4 bg-slate-800/50 backdrop-blur-sm border-2 border-teal-500/30 text-white rounded-2xl font-bold text-base hover:bg-slate-700/50 hover:border-teal-500/60 transition-all duration-300 transform hover:scale-105"
             >
-              Get Started
+              <span className="flex items-center">
+                <Rocket className="w-5 h-5 mr-2 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300" />
+                Get Started
+              </span>
             </Link>
           </div>
 
-          {/* Stats Section with CountUp */}
-          <div className="grid grid-cols-3 gap-8 mt-24 max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '400ms' }}>
+          <div ref={statsRef} className="grid grid-cols-3 gap-8 mt-24 max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '400ms' }}>
             {[
-              { number: '20', label: 'Projects Delivered', gradient: 'from-teal-400 to-cyan-500' },
-              { number: '100%', label: 'Client Satisfaction', gradient: 'from-cyan-400 to-orange-500' },
-              { number: '15', label: 'Team', gradient: 'from-orange-400 to-teal-500' }
-            ].map((stat, index) => {
-              const [ref, inView] = useInView({ threshold: 0.3 }); // remove triggerOnce
-              return (
-                <div key={index} className="text-center group cursor-pointer">
-                  <div
-                    ref={ref}
-                    className={`text-5xl md:text-6xl font-black bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    {inView ? (
-                       <CountUp
-                          start={0}
-                          end={parseInt(stat.number.replace('%', ''))}
-                          duration={2}
-                          suffix={stat.number.includes('%') ? '%' : ''}
-                          redraw={true} // redraw on re-enter
-                         />
-                      ) : (
-                        0
-                       )}
-                     </div>
-                     <div className="text-slate-400 font-medium">{stat.label}</div>
-                  </div>
-                );
-              })}
-
+              { count: projectCount, suffix: '', label: 'Projects Delivered', gradient: 'from-teal-400 to-cyan-500' },
+              { count: satisfactionCount, suffix: '%', label: 'Client Satisfaction', gradient: 'from-cyan-400 to-orange-500' },
+              { count: teamCount, suffix: '', label: 'Team Members', gradient: 'from-orange-400 to-teal-500' }
+            ].map((stat, index) => (
+              <div key={index} className="text-center group cursor-pointer">
+                <div className={`text-5xl md:text-6xl font-black bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                  {stat.count}{stat.suffix}
+                </div>
+                <div className="text-slate-400 font-medium">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
-      
 
       </section>
 
+      
       <AnimatedSection className="relative py-32 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1920')] bg-cover bg-center opacity-30"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/85 to-slate-950"></div>
