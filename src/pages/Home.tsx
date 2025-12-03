@@ -37,14 +37,14 @@ const Home = () => {
 
 <div className="relative group">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.15] tracking-tight">
-              <span className="block mb-3 overflow-hidden">
+              <span className="block mb-3 overflow-hidden pb-2">
                 <span className="inline-block animate-slide-up opacity-0" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
                   <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent group-hover:from-teal-400 group-hover:via-cyan-400 group-hover:to-teal-400 transition-all duration-700">
                     Where Logic ends, creativity
                   </span>
                 </span>
               </span>
-              <span className="block overflow-hidden">
+              <span className="block overflow-hidden pb-2">
                 <span className="inline-block animate-slide-up opacity-0" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
                   <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent group-hover:from-orange-400 group-hover:via-teal-400 group-hover:to-cyan-400 transition-all duration-700">
                     begins.
@@ -84,18 +84,17 @@ const Home = () => {
             </Link>
           </div>
 
-          <div ref={statsRef} className="grid grid-cols-3 gap-8 mt-24 max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '400ms' }}>
+          <div ref={statsRef} className="grid grid-cols-3 gap-4 sm:gap-8 mt-24 max-w-4xl mx-auto animate-fade-in px-4" style={{ animationDelay: '400ms' }}>
             {[
               { count: projectCount, suffix: '', label: 'Projects Delivered', gradient: 'from-teal-400 to-cyan-500' },
               { count: satisfactionCount, suffix: '%', label: 'Client Satisfaction', gradient: 'from-cyan-400 to-orange-500' },
               { count: teamCount, suffix: '', label: 'Team Members', gradient: 'from-orange-400 to-teal-500' }
             ].map((stat, index) => (
               <div key={index} className="text-center group cursor-pointer">
-                <div className={`text-[2.75rem] sm:text-5xl md:text-6xl font-black bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300 tracking-tight whitespace-nowrap`}>
-
+                <div className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300`}>
                   {stat.count}{stat.suffix}
                 </div>
-                <div className="text-slate-400 font-medium">{stat.label}</div>
+                <div className="text-xs sm:text-sm md:text-base text-slate-400 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -107,7 +106,6 @@ const Home = () => {
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1920')] bg-cover bg-center opacity-30"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/85 to-slate-950"></div>
         <div className="max-w-7xl mx-auto relative z-10">
-          
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
               Why <span className="bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent">TheLogicLess</span>

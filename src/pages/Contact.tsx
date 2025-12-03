@@ -105,21 +105,34 @@ const Contact = () => {
 
           <div>
             <div className="space-y-8">
-              {[
-                { icon: MapPin, title: 'Our Office', content: '212 N. 2ND ST. STE 100\nRichmond, KY 40475' },
-                { icon: Phone, title: 'Phone', content: '+1 (502) 402-2407' },
-                { icon: Mail, title: 'Email', content: 'info@thelogicless.com' }
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-start space-x-4 p-6 rounded-xl bg-slate-900/50 border border-slate-800">
-                  <div className="w-12 h-12 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-lg flex items-center justify-center">
-                    <item.icon className="w-6 h-6 text-teal-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
-                    <p className="text-slate-400 whitespace-pre-line">{item.content}</p>
-                  </div>
+              <a href="https://maps.google.com/?q=212+N.+2ND+ST.+STE+100+Richmond+KY+40475" target="_blank" rel="noopener noreferrer" className="flex items-start space-x-4 p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-teal-500/50 transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-lg flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-teal-400" />
                 </div>
-              ))}
+                <div>
+                  <h3 className="text-xl font-semibold text-white mb-2">Our Office</h3>
+                  <p className="text-slate-400">212 N. 2ND ST. STE 100</p>
+                  <p className="text-slate-400">Richmond, KY 40475</p>
+                </div>
+              </a>
+              <a href="tel:+15024022407" className="flex items-start space-x-4 p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-teal-500/50 transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-lg flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-teal-400" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-white mb-2">Phone</h3>
+                  <p className="text-slate-400">+1 (502) 402-2407</p>
+                </div>
+              </a>
+              <a href="mailto:info@thelogicless.com" className="flex items-start space-x-4 p-6 rounded-xl bg-slate-900/50 border border-slate-800 hover:border-teal-500/50 transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-lg flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-teal-400" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-white mb-2">Email</h3>
+                  <p className="text-slate-400">info@thelogicless.com</p>
+                </div>
+              </a>
             </div>
             <div className="mt-8 rounded-2xl overflow-hidden h-96 border border-slate-800">
               <iframe

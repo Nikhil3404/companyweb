@@ -2,36 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ✅ CRITICAL MOBILE FULLSCREEN FIX */
-html,
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #020617; /* slate-950 */
-  overflow-x: hidden;
-}
-
-#root {
-  min-height: 100vh;
-  width: 100%;
-  background-color: #020617;
-}
-
-/* ✅ YOUR EXISTING BASE LAYER (UNCHANGED) */
 @layer base {
   * {
     @apply scroll-smooth;
   }
 
+  html {
+    @apply bg-slate-950;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-slate-950 text-slate-100;
     font-feature-settings: 'cv11', 'cv04', 'ss01';
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
 }
 
-/* ✅ YOUR EXISTING UTILITIES (UNCHANGED) */
 @layer utilities {
   @keyframes fade-in-up {
     from {

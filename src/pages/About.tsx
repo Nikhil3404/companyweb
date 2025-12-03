@@ -85,7 +85,7 @@ const About = () => {
             { icon: Award, count: projectCount, suffix: '', label: 'Projects' },
             { icon: Users, count: teamCount, suffix: '', label: 'Team Members' },
             { icon: TrendingUp, count: satisfactionCount, suffix: '%', label: 'Satisfaction' },
-            { icon: Globe, count: clientCount, suffix: '', label: 'Clients' }
+            { icon: Globe, count: clientCount, suffix: '+', label: 'Clients' }
           ].map((metric, idx) => (
             <div key={idx} className="text-center p-6 rounded-xl bg-slate-900/50 border border-slate-800">
               <metric.icon className="w-10 h-10 mx-auto mb-4 text-teal-400" />
@@ -107,7 +107,7 @@ const About = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <div className="space-y-6">
-                  <div className="flex items-start space-x-4 p-4 rounded-lg bg-slate-800/50 hover:bg-slate-800/70 transition-all duration-300 group">
+                  <a href="https://maps.google.com/?q=212+N.+2ND+ST.+STE+100+Richmond+KY+40475" target="_blank" rel="noopener noreferrer" className="flex items-start space-x-4 p-4 rounded-lg bg-slate-800/50 hover:bg-slate-800/70 transition-all duration-300 group">
                     <div className="w-12 h-12 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <MapPin className="w-6 h-6 text-teal-400" />
                     </div>
@@ -116,8 +116,8 @@ const About = () => {
                       <p className="text-slate-300">212 N. 2ND ST. STE 100</p>
                       <p className="text-slate-300">Richmond, KY 40475</p>
                     </div>
-                  </div>
-                  <div className="flex items-center space-x-4 p-4 rounded-lg bg-slate-800/50 hover:bg-slate-800/70 transition-all duration-300 group">
+                  </a>
+                  <a href="tel:+15024022407" className="flex items-center space-x-4 p-4 rounded-lg bg-slate-800/50 hover:bg-slate-800/70 transition-all duration-300 group">
                     <div className="w-12 h-12 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Phone className="w-6 h-6 text-teal-400" />
                     </div>
@@ -125,8 +125,8 @@ const About = () => {
                       <p className="font-semibold text-white mb-1">Phone</p>
                       <p className="text-slate-300">+1 (502) 402-2407</p>
                     </div>
-                  </div>
-                  <div className="flex items-center space-x-4 p-4 rounded-lg bg-slate-800/50 hover:bg-slate-800/70 transition-all duration-300 group">
+                  </a>
+                  <a href="mailto:info@thelogicless.com" className="flex items-center space-x-4 p-4 rounded-lg bg-slate-800/50 hover:bg-slate-800/70 transition-all duration-300 group">
                     <div className="w-12 h-12 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Mail className="w-6 h-6 text-teal-400" />
                     </div>
@@ -134,7 +134,7 @@ const About = () => {
                       <p className="font-semibold text-white mb-1">Email</p>
                       <p className="text-slate-300">info@thelogicless.com</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div className="rounded-xl overflow-hidden h-80 border border-slate-600">

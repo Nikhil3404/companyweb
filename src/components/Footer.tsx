@@ -16,7 +16,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-slate-400 mb-4">
-              Where logic ends, creativity begins.
+              where logic ends, creativity begins
             </p>
             <div className="flex space-x-4">
               {[Linkedin, Twitter, Facebook].map((Icon, idx) => (
@@ -72,15 +72,17 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3 text-slate-400">
                 <MapPin className="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" />
-                <span>212 N. 2ND ST. STE 100<br />Richmond, KY 40475</span>
+                <a href="https://maps.google.com/?q=212+N.+2ND+ST.+STE+100+Richmond+KY+40475" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors duration-200">
+                  212 N. 2ND ST. STE 100<br />Richmond, KY 40475
+                </a>
               </li>
               <li className="flex items-center space-x-3 text-slate-400">
                 <Phone className="w-5 h-5 text-teal-400 flex-shrink-0" />
-                <span>+1 (502) 402-2407</span>
+                <a href="tel:+15024022407" className="hover:text-teal-400 transition-colors duration-200">+1 (502) 402-2407</a>
               </li>
               <li className="flex items-center space-x-3 text-slate-400">
                 <Mail className="w-5 h-5 text-teal-400 flex-shrink-0" />
-                <span>info@thelogicless.com</span>
+                <a href="mailto:info@thelogicless.com" className="hover:text-teal-400 transition-colors duration-200">info@thelogicless.com</a>
               </li>
             </ul>
           </div>
