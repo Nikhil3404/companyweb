@@ -31,7 +31,7 @@ const About = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">About TheLogicLess</h1>
-          <p className="text-lg text-slate-500">Where Logic Ends, Creativity Begins</p>
+         <p className="text-lg text-slate-500">Where Logic Ends, Creativity Begins</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 mb-20">
@@ -55,6 +55,10 @@ const About = () => {
           <div className="rounded-2xl overflow-hidden">
             <img src="https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=1260" alt="Our team" className="w-full h-full object-cover" />
           </div>
+        </div>
+
+        <div className="text-center mb-12">
+          <p className="text-lg text-slate-500">Where Logic Ends, Creativity Begins</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 mb-20">

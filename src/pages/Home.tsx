@@ -23,9 +23,8 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-slate-950 overflow-hidden">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-teal-500/20 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute top-1/2 -left-40 w-[400px] h-[400px] bg-cyan-500/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute -bottom-40 right-1/3 w-[450px] h-[450px] bg-orange-500/10 rounded-full blur-[110px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-slate-500/20 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute top-1/2 -left-40 w-[400px] h-[400px] bg-slate-500/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <section
