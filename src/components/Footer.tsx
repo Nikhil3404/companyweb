@@ -16,7 +16,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-slate-400 mb-4">
-              Where logic ends, Creativity begins.
+              Where logic ends, creativity begins.
             </p>
             <div className="flex space-x-4">
               {[Linkedin, Twitter, Facebook].map((Icon, idx) => (
@@ -76,7 +76,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3 text-slate-400">
                 <Phone className="w-5 h-5 text-teal-400 flex-shrink-0" />
-                <span>+1 (555) 123-4567</span>
+                <span>+1 (502) 402-2407</span>
               </li>
               <li className="flex items-center space-x-3 text-slate-400">
                 <Mail className="w-5 h-5 text-teal-400 flex-shrink-0" />

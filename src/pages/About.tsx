@@ -123,7 +123,7 @@ const About = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-white mb-1">Phone</p>
-                      <p className="text-slate-300">+1 (555) 123-4567</p>
+                      <p className="text-slate-300">+1 (502) 402-2407</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 p-4 rounded-lg bg-slate-800/50 hover:bg-slate-800/70 transition-all duration-300 group">

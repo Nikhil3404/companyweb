@@ -102,11 +102,11 @@ const Home = () => {
 
       </section>
 
-      
       <AnimatedSection className="relative py-32 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1920')] bg-cover bg-center opacity-30"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/85 to-slate-950"></div>
         <div className="max-w-7xl mx-auto relative z-10">
+          
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
               Why <span className="bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent">TheLogicLess</span>

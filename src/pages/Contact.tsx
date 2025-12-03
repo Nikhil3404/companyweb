@@ -107,7 +107,7 @@ const Contact = () => {
             <div className="space-y-8">
               {[
                 { icon: MapPin, title: 'Our Office', content: '212 N. 2ND ST. STE 100\nRichmond, KY 40475' },
-                { icon: Phone, title: 'Phone', content: '+1 (555) 123-4567' },
+                { icon: Phone, title: 'Phone', content: '+1 (502) 402-2407' },
                 { icon: Mail, title: 'Email', content: 'info@thelogicless.com' }
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start space-x-4 p-6 rounded-xl bg-slate-900/50 border border-slate-800">
