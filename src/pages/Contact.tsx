@@ -4,7 +4,7 @@ import { usePageMeta } from '../hooks/usePageMeta';
 
 const Contact = () => {
   usePageMeta({
-    title: 'Contact Us',
+    title: 'Contact-Us',
     description: 'Get in touch with theLogicLess for innovative technology solutions. Contact us for AI automation, cloud services, custom development, and IT staffing. Based in Richmond, KY.'
   });
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '', message: '' });
