@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { Users, Search, FileCheck, Briefcase, ArrowRight, CheckCircle } from 'lucide-react';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const Staffing = () => {
+  usePageMeta({
+    title: 'IT Staffing Solutions',
+    description: 'Professional IT staffing and recruitment services. Find qualified developers, engineers, and technology professionals for contract, full-time, and project-based positions.'
+  });
   const process = [
     { icon: Search, title: 'Talent Sourcing', description: 'We leverage our extensive network to identify top talent.', image: 'https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=800' },
     { icon: FileCheck, title: 'Screening', description: 'Rigorous screening including technical assessments.', image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800' },

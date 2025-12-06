@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Lightbulb, Target, Users, Rocket, ArrowRight, CheckCircle, Zap } from 'lucide-react';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const WhatWeDo = () => {
+  usePageMeta({
+    title: 'What We Do',
+    description: 'Discover our methodology for driving technology innovation. We analyze, design, develop, and optimize solutions to help businesses achieve their digital transformation goals.'
+  });
   return (
     <div className="min-h-screen bg-slate-950 pt-24 pb-20">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">

@@ -1,7 +1,12 @@
 import { useState, FormEvent } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const Contact = () => {
+  usePageMeta({
+    title: 'Contact Us',
+    description: 'Get in touch with theLogicLess for innovative technology solutions. Contact us for AI automation, cloud services, custom development, and IT staffing. Based in Richmond, KY.'
+  });
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');

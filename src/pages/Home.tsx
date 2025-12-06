@@ -4,8 +4,13 @@ import { ArrowRight, Sparkles, Zap, Shield, Code, Cloud, ShieldCheck, Rocket } f
 import { AnimatedSection } from '../components/AnimatedSection';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useCountUp } from '../hooks/useCountUp';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const Home = () => {
+  usePageMeta({
+    title: 'Home',
+    description: 'theLogicLess delivers cutting-edge technology solutions including AI automation, cloud services, custom development, cybersecurity, and IT staffing. Where logic ends, creativity begins.'
+  });
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation();
 

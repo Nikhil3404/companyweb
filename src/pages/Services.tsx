@@ -3,8 +3,13 @@ import { AnimatedSection } from '../components/AnimatedSection';
 import { services } from '../data/services';
 import { ArrowRight } from 'lucide-react';
 import { useState } from 'react';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const Services = () => {
+  usePageMeta({
+    title: 'Our Services',
+    description: 'Explore theLogicLess comprehensive technology services: AI automation, custom web and mobile development, cloud solutions, cybersecurity, data engineering, and IT consulting.'
+  });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (

@@ -1,10 +1,16 @@
 import { useParams, Link } from 'react-router-dom';
 import { services } from '../data/services';
 import { CheckCircle, ArrowLeft } from 'lucide-react';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
   const service = services.find(s => s.id === serviceId);
+
+  usePageMeta({
+    title: service?.title || 'Service Details',
+    description: service?.description || 'Learn more about our technology services and solutions.'
+  });
 
   if (!service) {
     return (

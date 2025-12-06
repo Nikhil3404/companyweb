@@ -3,8 +3,13 @@ import { useSearchParams } from 'react-router-dom';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { jobs, Job } from '../data/jobs';
 import { X, MapPin, Briefcase } from 'lucide-react';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const Careers = () => {
+  usePageMeta({
+    title: 'Careers',
+    description: 'Join theLogicLess team. Explore exciting career opportunities in software development, data engineering, cloud architecture, and technology consulting. Apply for full-time and contract positions.'
+  });
   const [searchParams] = useSearchParams();
   const typeParam = searchParams.get('type');
   const [filter, setFilter] = useState<'All' | 'Full-time' | 'Contract'>(

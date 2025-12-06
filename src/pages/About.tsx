@@ -2,8 +2,13 @@ import { Link } from 'react-router-dom';
 import { Target, Eye, Heart, Users, Award, TrendingUp, Globe, Shield, ArrowRight, Lightbulb, MapPin, Phone, Mail } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useCountUp } from '../hooks/useCountUp';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const About = () => {
+  usePageMeta({
+    title: 'About Us',
+    description: 'Learn about theLogicLess - a technology consulting firm committed to innovation, excellence, and driving business transformation through cutting-edge solutions and expert IT services.'
+  });
   const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation();
 
   const projectCount = useCountUp(20, 1000, statsVisible);
@@ -89,7 +94,7 @@ const About = () => {
             { icon: Award, count: projectCount, suffix: '', label: 'Projects' },
             { icon: Users, count: teamCount, suffix: '', label: 'Team Members' },
             { icon: TrendingUp, count: satisfactionCount, suffix: '%', label: 'Satisfaction' },
-            { icon: Globe, count: clientCount, suffix: '+', label: 'Clients' }
+            { icon: Globe, count: clientCount, suffix: '', label: 'Clients' }
           ].map((metric, idx) => (
             <div key={idx} className="text-center p-6 rounded-xl bg-slate-900/50 border border-slate-800">
               <metric.icon className="w-10 h-10 mx-auto mb-4 text-teal-400" />
