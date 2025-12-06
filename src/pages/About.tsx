@@ -6,7 +6,7 @@ import { usePageMeta } from '../hooks/usePageMeta';
 
 const About = () => {
   usePageMeta({
-    title: 'About Us',
+    title: 'About-Us',
     description: 'Learn about theLogicLess - a technology consulting firm committed to innovation, excellence, and driving business transformation through cutting-edge solutions and expert IT services.'
   });
   const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation();
